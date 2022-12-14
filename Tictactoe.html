@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+    body {
+        font-family: Arial;
+    }
+
+    table {
+        margin: 0 auto;
+    }
+
+    td {
+        width: 80px;
+        height: 80px;
+        border: 1px solid black;
+        text-align: center;
+        font-size: 60px;
+    }
+    </style>
+</head>
+<body>
+    <h1>Tic-Tac-Toe</h1>
+    <table>
+        <tr>
+            <td id="cell-1">_</td>
+            <td id="cell-2">_</td>
+            <td id="cell-3">_</td>
+        </tr>
+        <tr>
+            <td id="cell-4">_</td>
+            <td id="cell-5">_</td>
+            <td id="cell-6">_</td>
+        </tr>
+        <tr>
+            <td id="cell-7">_</td>
+            <td id="cell-8">_</td>
+            <td id="cell-9">_</td>
+        </tr>
+    </table>
+    <script>
+    let turn = "X"; // player 1 turn
+    let score = {
+        "X": 0,
+        "O": 0
+    };
+    let gridValue = 0;
+
+    function fnLoad(){
+        let select = document.getElementsByTagName("td");
+        for (let i = 0; i < select.length; i++){
+            select[i].addEventListener("click", fnSet);
+        }
+    }
+
+    function fnSet(){
+        if (this.innerHTML !== "_"){
+            return;
+        }
+        this.innerHTML = turn;
+        gridValue++;
+        score[turn] += this.identifier;
+        if (fnWinner(score[turn])){
+            alert("Player " + turn + " wins!");
+            fnEnd();
+        } else if (gridValue === 9){
+            alert("It's a draw!");
+            fnEnd();
+        } else {
+            turn = turn === "X" ? "O" : "X";
+        }
+    }
+
+    function fnWinner(score){
+        let result = false;
+        if (score === 3 || score === 12){
+            result = true;
+        } else {
+            let winningCombos = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]];
+            for (let i = 0; i < winningCombos.length; i++){
+                let matches = 0;
+                for (let j = 0; j < winningCombos[i].length; j++){
+                    if (score.includes(winningCombos[i][j])){
+                        matches++;
+                    }
+                    if (matches === 3){
+                        result = true;
+                        break;
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
+    function fnEnd(){
+        let select = document.getElementsByTagName("td");
+        for (let i = 0; i < select.length; i++){
+            select[i].innerHTML = "_";
+        }
+        gridValue = 0;
+        score = {
+            "X": 0,
+            "O": 0
+        };
+    }
+
+    window.addEventListener("load", fnLoad);
+    </script>
+</body>
+</html>

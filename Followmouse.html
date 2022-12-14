@@ -1,0 +1,33 @@
+
+<html>
+<head>
+
+  <title>Div Follows Mouse</title>
+  <style type="text/css">
+    #mouse_follower {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      border-radius: 10px;
+      background: #00f;
+    }
+
+     body{
+        background-image: url(https://images.unsplash.com/reserve/bOvf94dPRxWu0u3QsPjF_tree.jpg?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1476&q=80);
+            margin: 0px;}
+  </style>
+</head>
+<body>
+<p>
+   This is my codesketch where wherever your Mouse goes on the page, a div will follow it.
+</p>
+
+  <div id="mouse_follower"></div>
+  <script type="text/javascript">
+  document.addEventListener('mousemove', function(e){
+    document.getElementById('mouse_follower').style.left = e.clientX + "px";
+    document.getElementById('mouse_follower').style.top = e.clientY + "px";
+  });
+  </script>
+</body>
+</html>

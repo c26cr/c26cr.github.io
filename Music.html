@@ -1,0 +1,15 @@
+<html>
+<head>
+  <title>Music Player</title>
+  <style>
+    body {
+      background-image: url('https://images.unsplash.com/reserve/bOvf94dPRxWu0u3QsPjF_tree.jpg?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1476&q=80');
+    }
+  </style>
+</head>
+<body>
+  <audio id="player" src="music.mp3" type="audio/mpeg" preload="auto" autoplay="true" loop="true"></audio>
+  <button onclick="document.getElementById('player').play()">Play</button>
+  <button onclick="document.getElementById('player').pause()">Pause</button>
+</body>
+</html>
