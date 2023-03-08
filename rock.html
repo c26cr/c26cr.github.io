@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rock Paper Scissors Game</title>
+	<style type="text/css">
+		#choices {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-bottom: 20px;
+		}
+		#choices img {
+			width: 100px;
+			margin: 0 10px;
+			cursor: pointer;
+		}
+		#result {
+			text-align: center;
+			font-size: 24px;
+			font-weight: bold;
+		}
+	</style>
+	<script type="text/javascript">
+		window.addEventListener('load', function() {
+			var choices = document.querySelectorAll('#choices img');
+			var computerChoice = '';
+			var playerChoice = '';
+			var result = document.getElementById('result');
+
+			// assign click event to each choice image
+			for (var i = 0; i < choices.length; i++) {
+				choices[i].addEventListener('click', function() {
+					// set player choice based on clicked image
+					playerChoice = this.alt;
+					// generate computer choice
+					computerChoice = ['rock', 'paper', 'scissors'][Math.floor(Math.random() * 3)];
+					// display choices
+					result.innerHTML = 'You chose ' + playerChoice + ', the computer chose ' + computerChoice + '. ';
+					// determine winner
+					if (playerChoice === computerChoice) {
+						result.innerHTML += "It's a tie!";
+					} else if ((playerChoice === 'rock' && computerChoice === 'scissors') ||
+							   (playerChoice === 'paper' && computerChoice === 'rock') ||
+							   (playerChoice === 'scissors' && computerChoice === 'paper')) {
+						result.innerHTML += 'You win!';
+					} else {
+						result.innerHTML += 'You lose!';
+					}
+				});
+			}
+		});
+	</script>
+</head>
+<body>
+	<div id="choices">
+		<img src="rock.png" alt="rock">
+		<img src="paper.png" alt="paper">
+		<img src="scissors.png" alt="scissors">
+	</div>
+	<div id="result"></div>
+</body>
+</html>

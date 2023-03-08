@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		.cookies{ width:200px;
+			height: 200px;
+		background-color: darkblue;
+			display: inline-block;
+			margin: 100px,;
+			background-image: https://assets.bonappetit.com/photos/5ca534485e96521ff23b382b/4:3/w_3600,h_2700,c_limit/chocolate-chip-cookie.jpg;
+			background-repeat:no-repeat;
+			background-size:contain;
+
+		}
+
+	</style>
+	<title></title>
+</head>
+<body>
+
+<script type="text/javascript">
+	function makeCookie(placeholder){
+		var cookie = document.createElement("div")
+		document.body.appendChild(cookie);
+		cookie.classList.add('cookies')
+		// cookie.innerText = placeholder;
+	}
+
+for(var i=0; i<1000;i=i+1){
+makeCookie(i)
+}
+
+
+</script>
+</body>
+</html>
