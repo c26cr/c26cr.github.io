@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .pieces {
+      width: 50px;
+      height: 50px;
+      background-color: blue;
+      position: absolute;
+    }
+  </style>
+</head>
+  <div class="pieces" id="whitequeen"></div>
+  <div class="pieces" id="whiteking"></div>
+  <div class="pieces" id="whitebishop1"></div>
+  <div class="pieces" id="whiteknight1"></div>
+  <div class="pieces" id="whiterook1"></div>
+  <div class="pieces" id="whitebishop2"></div>
+  <div class="pieces" id="whiteknight2"></div>
+  <div class="pieces" id="whiterook2"></div>
+  <div class="pieces" id="whitepawn1"></div>
+  <div class="pieces" id="whitepawn2"></div>
+  <div class="pieces" id="whitepawn3"></div>
+  <div class="pieces" id="whitepawn4"></div>
+  <div class="pieces" id="whitepawn5"></div>
+  <div class="pieces" id="whitepawn6"></div>
+  <div class="pieces" id="whitepawn7"></div>
+  <div class="pieces" id="whitepawn8"></div>
+<body>
+  <div class="pieces"></div>
+  <div class="pieces"></div>
+  <div class="pieces"></div>
+
+  <script>
+    
+    const pieces = document.getElementsByClassName("pieces");
+
+    let clickCounter = 0;
+
+
+    Array.from(pieces).forEach((piece) => {
+      piece.addEventListener("click", function() {
+     
+        clickCounter++;
+
+        
+        if (clickCounter % 2 === 1) {
+
+          piece.addEventListener("mousemove", followMouse);
+        } else {
+          
+          piece.removeEventListener("mousemove", followMouse);
+        }
+      });
+    });
+
+    
+    function followMouse(event) {
+      const piece = event.target;
+      piece.style.left = event.clientX - piece.offsetWidth / 2 + "px";
+      piece.style.top = event.clientY - piece.offsetHeight / 2 + "px";
+    }
+  </script>
+</body>
+</html>

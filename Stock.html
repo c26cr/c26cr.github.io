@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hangman Game</title>
+    <style>
+        body {
+            background-image: url('background-image.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: #FFF;
+            margin-top: 100px;
+        }
+        h1 {
+            font-size: 40px;
+            margin-bottom: 30px;
+        }
+        .word {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+        .letters {
+            font-size: 20px;
+            margin-top: 30px;
+        }
+        .letters span {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 1px solid #FFF;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hangman Game</h1>
+    <div class="word" id="word"></div>
+    <div class="letters" id="letters"></div>
+    
+    <script>
+        // Array of words
+        var words = ["hangman", "javascript", "sublime", "openai", "html"];
+
+        // Randomly select a word from the array
+        var word = words[Math.floor(Math.random() * words.length)];
+
+        // Initialize an empty array to store the guessed letters
+        var guessedLetters = [];
+
+        // Function to update the word display
+        function updateWordDisplay() {
+            var displayWord = "";
+            for (var i = 0; i < word.length; i++) {
+                if (guessedLetters.indexOf(word[i]) !== -1) {
+                    displayWord += word[i] + " ";
+                } else {
+                    displayWord += "_ ";
+                }
+            }
+            document.getElementById("word").innerHTML = displayWord;
+        }
+
+        // Function to handle letter clicks
+        function handleLetterClick(letter) {
+            guessedLetters.push(letter);
+            updateWordDisplay();
+            checkGameStatus();
+        }
+
+        // Function to check the game status
+        function checkGameStatus() {
+            if (guessedLetters.length === word.length) {
+                alert("Congratulations! You guessed the word.");
+            }
+        }
+
+        // Initialize the word display
+        updateWordDisplay();
+
+        // Generate letter buttons
+        var lettersContainer = document.getElementById("letters");
+        for (var i = 0; i < 26; i++) {
+            var letter = String.fromCharCode(65 + i);
+            var letterButton = document.createElement("span");
+            letterButton.innerHTML = letter;
+            letterButton.addEventListener("click", function() {
+                handleLetterClick(this.innerHTML);
+            });
+            lettersContainer.appendChild(letterButton);
+        }
+    </script>
+</body>
+</html>
+
+

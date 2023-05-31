@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bicycle Rolling onto Hills and Mother's Day Card</title>
+	<style>
+		
+		body {
+			background-color: #87ceeb;
+		}
+
+		#truck{
+			background-image:url(Truck.png);
+			 width: 100px;
+			 height:100px;
+			 background-color: darkred;
+		}
+		.hills {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			height: 100%;
+			background-color: #228b22;
+		}
+		.bicycle {
+			position: absolute;
+			bottom: 50%;
+			left: -100px;
+			animation: roll 5s linear forwards;
+		}
+		@keyframes roll {
+			0% {
+				transform: translateX(-100px);
+			}
+			100% {
+				transform: translateX(400px);
+			}
+		}
+		.card {
+			display: none;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			padding: 20px;
+			background-color: #fff;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+			font-family: Arial, sans-serif;
+			text-align: center;
+		}
+		.card h1 {
+			font-size: 36px;
+			margin-top: 0;
+		}
+		.card p {
+			font-size: 18px;
+			margin-bottom: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="truck"></div>
+	<div class="card">
+		<h1>Happy Mother's Day!</h1>
+		<p>Thank you for always being there for me.</p>
+	</div>
+	<script>
+		setTimeout(function() {
+			document.querySelector('.bicycle').style.display = 'none';
+			document.querySelector('.card').style.display = 'block';
+		}, 5000);
+	</script>
+</body>
+</html>
+
